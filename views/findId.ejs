@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/findId.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+  </head>
+  <body>
+    <div class="login-box">
+      <h2>아이디 찾기</h2>
+      <form>
+        전화번호
+        <div class="input-group">
+          <input
+            type="number"
+            name="areaCode"
+            maxlength="3"
+            required
+            pattern="^(01[0-9])$"
+            title="010, 011 등 올바른 형식을 입력해주세요."
+            placeholder="010"
+          />
+          -
+          <input
+            type="number"
+            name="middleNumber"
+            maxlength="4"
+            required
+            pattern="^\d{4}$"
+            title="4자리"
+            placeholder="xxxx"
+          />
+          -
+          <input
+            type="number"
+            name="lastNumber"
+            maxlength="4"
+            required
+            pattern="^\d{4}$"
+            title="4자리"
+            placeholder="xxxx"
+          />
+        </div>
+        <div onclick="find()">아이디 찾기</div>
+        <div id="alret"></div>
+        <a href="/">로그인하러 가기</a>
+      </form>
+    </div>
+  </body>
+  <script src="/js/findId.js"></script>
+</html>

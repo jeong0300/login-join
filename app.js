@@ -19,13 +19,21 @@ app.get("/userinfo", (req, res) => {
   res.json(data);
 });
 
+app.get("/", (req, res) => {
+  // data = req.body;
+  res.render("login");
+});
+
 app.get("/join", (req, res) => {
   res.render("join");
 });
 
-app.get("/", (req, res) => {
-  // data = req.body;
-  res.render("login");
+app.get("/findId", (req, res) => {
+  res.render("findId");
+});
+
+app.get("/findPw", (req, res) => {
+  res.render("findPw");
 });
 
 app.post("/", (req, res) => {

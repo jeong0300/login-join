@@ -14,20 +14,3 @@ fetch("/userinfo")
   .catch((e) => {
     console.log("error!", e);
   });
-
-// 도메인
-const domainListEl = document.querySelector("#domain-list");
-const domainInputEl = document.querySelector("#domain-txt");
-
-domainListEl.addEventListener("change", (event) => {
-  // option에 있는 도메인 선택 시
-  if (event.target.value !== "type") {
-    // 선택한 도메인을 input에 입력하고 disabled
-    domainInputEl.value = event.target.value;
-    domainInputEl.disabled = true;
-  } else {
-    // 직접 입력 시
-    domainInputEl.value = "";
-    domainInputEl.disabled = false;
-  }
-});
