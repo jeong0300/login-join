@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="/css/findId.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.css"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LOGIN</title>
@@ -16,6 +20,7 @@
             type="number"
             name="areaCode"
             maxlength="3"
+            id="area"
             required
             pattern="^(01[0-9])$"
             title="010, 011 등 올바른 형식을 입력해주세요."
@@ -26,6 +31,7 @@
             type="number"
             name="middleNumber"
             maxlength="4"
+            id="middle"
             required
             pattern="^\d{4}$"
             title="4자리"
@@ -36,6 +42,7 @@
             type="number"
             name="lastNumber"
             maxlength="4"
+            id="last"
             required
             pattern="^\d{4}$"
             title="4자리"
@@ -43,10 +50,10 @@
           />
         </div>
         <div onclick="find()">아이디 찾기</div>
-        <div id="alret"></div>
         <a href="/">로그인하러 가기</a>
       </form>
     </div>
   </body>
   <script src="/js/findId.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.all.min.js"></script>
 </html>

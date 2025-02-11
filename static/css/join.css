@@ -102,6 +102,10 @@ select:focus {
   outline: none;
 }
 
+#alret {
+  color: red;
+}
+
 /* 비밀번호 확인 및 중복 확인 버튼 */
 .check-btn {
   background-color: #9e9d89; /* sage 색상 */

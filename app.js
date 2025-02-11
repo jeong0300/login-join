@@ -20,7 +20,6 @@ app.get("/userinfo", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  // data = req.body;
   res.render("login");
 });
 
@@ -36,14 +35,14 @@ app.get("/findPw", (req, res) => {
   res.render("findPw");
 });
 
+app.get("/main", (req, res) => {
+  data = req.query;
+  res.render("main", { data: data });
+});
+
 app.post("/", (req, res) => {
   data = req.body;
   res.render("login");
-});
-
-app.post("/main", (req, res) => {
-  data = req.body;
-  res.render("main", { user: data });
 });
 
 app.listen(port, () => {

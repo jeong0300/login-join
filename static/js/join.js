@@ -6,12 +6,21 @@ function check() {
   const isExist = userDataAll.some((user) => user.id === id);
 
   if (id === "") {
-    alert("이메일이 비어있습니다.");
+    Swal.fire({
+      icon: "error",
+      text: "아이디가 비어있습니다.",
+    });
   } else {
     if (isExist) {
-      alert("이미 사용 중인 아이디입니다.");
+      Swal.fire({
+        icon: "error",
+        text: "이미 사용 중인 아이디입니다.",
+      });
     } else {
-      alert("사용 가능한 아이디입니다.");
+      Swal.fire({
+        icon: "success",
+        text: "사용 가능한 아이디입니다.",
+      });
     }
   }
 }
@@ -21,10 +30,17 @@ function passCheck() {
   const passCheck = document.getElementById("passCheck").value;
   const alret = document.getElementById("alret");
 
-  if (pass === passCheck) {
-    alret.innerText = "동일한 비밀번호입니다.";
+  if (pass === "" || passCheck === "") {
+    Swal.fire({
+      icon: "error",
+      text: "비밀번호가 비어있습니다.",
+    });
   } else {
-    alret.innerText = "다른 비밀번호입니다.";
+    if (pass === passCheck) {
+      alret.innerText = "동일한 비밀번호입니다.";
+    } else {
+      alret.innerText = "비밀번호가 다릅니다.";
+    }
   }
 }
 
