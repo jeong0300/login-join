@@ -1,0 +1,192 @@
+/* 기본적인 폰트 및 배경 스타일 설정 */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 변경: height → min-height */
+  margin: 0;
+  overflow-y: auto; /* 스크롤 가능하도록 설정 */
+}
+
+/* 로그인 박스 높이를 자동으로 조절 */
+.login-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin: 40px 0;
+  width: 100%;
+  max-width: 600px;
+  height: auto; /* 높이 자동 조절 */
+  overflow: visible; /* 가려지는 부분이 없도록 */
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* 폼 레이블 및 입력창 */
+form {
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  gap: 15px; /* 간격 */
+}
+
+/* 출생 연도 부분을 flex로 정렬 */
+.birth {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* select 박스 크기 조정 */
+.box {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px; /* 폰트 크기 줄이기 */
+  height: 36px; /* 높이 조정 */
+}
+
+/* select 내부 option 크기 조정 */
+.box option {
+  font-size: 14px; /* 글자 크기 줄이기 */
+  padding: 5px; /* 옵션 내부 간격 조정 */
+}
+
+/* 기본 input 스타일 */
+input[type="email"],
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%; /* 너비 100% */
+  box-sizing: border-box;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: #9e9d89; /* sage 색상 */
+  outline: none;
+}
+
+/* 아이디 입력란과 비밀번호를 세로로 배치 */
+.input-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-left input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-left input:focus {
+  border-color: #9e9d89; /* sage 색상 */
+  outline: none;
+}
+
+/* 비밀번호 확인 및 중복 확인 버튼 */
+.check-btn {
+  background-color: #9e9d89; /* sage 색상 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 97%;
+  text-align: center;
+}
+
+.check-btn:hover {
+  background-color: #858349;
+}
+
+/* 전화번호 입력 부분을 flex로 처리 */
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border-color: #9e9d89; /* sage 색상 */
+  outline: none;
+}
+
+/* 버튼 스타일 */
+button {
+  background-color: #9e9d89; /* sage 색상 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #858349;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 20px;
+    width: 90%;
+    min-height: auto;
+  }
+
+  .birth {
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .input-left {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1280px) {
+  .login-box {
+    max-width: 600px;
+  }
+}

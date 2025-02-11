@@ -13,6 +13,31 @@ app.use(express.static(path.join(__dirname, "static")));
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
+let data = "";
+
+app.get("/userinfo", (req, res) => {
+  res.json(data);
+});
+
+app.get("/join", (req, res) => {
+  res.render("join");
+});
+
 app.get("/", (req, res) => {
+  // data = req.body;
   res.render("login");
+});
+
+app.post("/", (req, res) => {
+  data = req.body;
+  res.render("login");
+});
+
+app.post("/main", (req, res) => {
+  data = req.body;
+  res.render("main", { user: data });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
