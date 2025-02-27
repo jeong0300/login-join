@@ -4,11 +4,15 @@ const port = 3000;
 const path = require("path");
 const bodyParser = require("body-parser");
 
+const loginRouter = require("./routes/loginRouter");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "static")));
+
+app.use("/login", loginRouter);
 
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
@@ -20,7 +24,7 @@ app.get("/userinfo", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("login");
+  res.render("first");
 });
 
 app.get("/join", (req, res) => {
@@ -33,16 +37,6 @@ app.get("/findId", (req, res) => {
 
 app.get("/findPw", (req, res) => {
   res.render("findPw");
-});
-
-app.get("/main", (req, res) => {
-  data = req.query;
-  res.render("main", { data: data });
-});
-
-app.post("/", (req, res) => {
-  data = req.body;
-  res.render("login");
 });
 
 app.listen(port, () => {
