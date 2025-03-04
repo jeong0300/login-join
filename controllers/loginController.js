@@ -1,5 +1,6 @@
 const users = require("../models/loginModel");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const SECRET_KEY = "C2C19C33C19C4E7EC5FA16AF267AC";
 
@@ -20,17 +21,20 @@ const moveMain = (req, res) => {
 // 아이디, 비밀번호 체크
 const checkLogin = async (req, res) => {
   try {
-    const id = req.body.id;
-    const pass = req.body.pass;
+    const { id, pass } = req.body;
+
+    console.log("id", id);
 
     const user = await users.getUserById(id);
     if (!user) {
       return res.send("존재하지 않는 계정입니다.");
     }
 
-    if (pass !== user.pw) {
+    const isMatch = await bcrypt.compare(pass, user.pw);
+    if (!isMatch) {
       return res.send("비밀번호가 일치하지 않습니다.");
     }
+
     const token = jwt.sign({ id: user.id, name: user.name }, SECRET_KEY, {
       expiresIn: "1h",
     });
@@ -38,6 +42,7 @@ const checkLogin = async (req, res) => {
     res.send({ token });
   } catch (error) {
     console.error("로그인 오류:", error);
+    res.status(500).send("서버 오류가 발생했습니다.");
   }
 };
 

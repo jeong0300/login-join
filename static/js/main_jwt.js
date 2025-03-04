@@ -43,7 +43,13 @@
   }
 })();
 
-function logout() {
+function signOut() {
   localStorage.removeItem("token");
-  window.location.href = "/login";
+
+  Swal.fire({
+    title: "로그아웃 성공",
+    icon: "success",
+  }).then(() => {
+    window.location.href = "/login";
+  });
 }

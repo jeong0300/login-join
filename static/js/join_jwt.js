@@ -1,45 +1,28 @@
 // 중복 확인
 function check() {
   const id = document.getElementById("id").value;
-  const pass = document.getElementById("pass").value;
-  const data = { id, pass };
+  const data = { id };
+
+  if (!id) {
+    Swal.fire("아이디를 입력해 주세요.");
+    return;
+  }
 
   axios({
     method: "post",
     url: `/join/check`,
     data: data,
   })
-    .then((res) => {
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
-        axios
-          .get("/login/main_jwt")
-          .then((response) => {
-            if (response.status === 200) {
-              window.location.href = "/login/main_jwt";
-            }
-          })
-          .catch((error) => {
-            Swal.fire({
-              title: "페이지 로드 오류",
-              icon: "error",
-            });
-          });
-      } else {
-        Swal.fire({
-          title: res.data,
-          icon: "error",
-        });
-      }
+    .then((response) => {
+      Swal.fire(response.data.message);
     })
-    .catch((e) => {
-      Swal.fire({
-        title: "서버 오류 발생",
-        icon: "error",
-      });
+    .catch((error) => {
+      console.error("중복 확인 오류:", error);
+      Swal.fire("서버 오류가 발생했습니다.");
     });
 }
 
+// 비밀번호 중복 확인
 function passCheck() {
   const pass = document.getElementById("pass").value;
   const passCheck = document.getElementById("passCheck").value;
@@ -57,4 +40,41 @@ function passCheck() {
       alret.innerText = "비밀번호가 다릅니다.";
     }
   }
+}
+
+// 회원가입
+function signup() {
+  const userId = document.getElementById("id").value;
+  const pw = document.getElementById("pass").value;
+  const name = document.getElementById("name").value;
+
+  console.log("회원가입:", userId);
+
+  axios
+    .post("/join/signup", { userId, pw, name })
+    .then((res) => {
+      if (res.data.result) {
+        alert(res.data.message);
+
+        axios
+          .get("/login")
+          .then((response) => {
+            if (response.status === 200) {
+              window.location.href = "/login";
+            }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "페이지 로드 오류",
+              icon: "error",
+            });
+          });
+      } else {
+        alert(res.data.message);
+      }
+    })
+    .catch((err) => {
+      console.error("회원가입 실패", err);
+      alert("회원가입 실패");
+    });
 }

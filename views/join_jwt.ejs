@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/css/join.css" />
     <link
       rel="stylesheet"
@@ -15,13 +16,20 @@
       <h2>회원가입</h2>
       <form>
         아이디
-        <input type="email" name="id" id="id" required />
+        <input
+          type="text"
+          name="id"
+          id="id"
+          placeholder="아이디를 입력해 주세요"
+          required
+        />
         <div class="check-btn" onclick="check()">중복확인</div>
         <br />
         이름
         <input
           type="text"
           name="name"
+          id="name"
           placeholder="이름을 입력해 주세요"
           required
         />
@@ -51,7 +59,7 @@
         <div id="alret"></div>
         <div onclick="passCheck()" class="check-btn">비밀번호 확인</div>
 
-        <button type="button" onclick="join()">회원가입</button>
+        <button type="button" onclick="signup()">회원가입</button>
         <a href="/login/">로그인하러 가기</a>
       </form>
     </div>

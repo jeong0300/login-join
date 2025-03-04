@@ -20,7 +20,7 @@ fetch("/userinfo")
       );
       if (user) {
         const alert = document.getElementById("alert");
-        alert.innerText = `${user.name} 님 환영합니다.`;
+        alert.innerHTML = `${user.name} 님 환영합니다. <br/> <div id="logout" onclick="signOut()">로그아웃</div>`;
       }
     }
   })
