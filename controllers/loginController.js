@@ -13,6 +13,10 @@ const moveLogin = async (req, res) => {
   }
 };
 
+const moveMain = (req, res) => {
+  res.render("main_jwt");
+};
+
 // 아이디, 비밀번호 체크
 const checkLogin = async (req, res) => {
   try {
@@ -37,4 +41,30 @@ const checkLogin = async (req, res) => {
   }
 };
 
-module.exports = { moveLogin, checkLogin };
+// 토큰 검증
+const verify = (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).json({ result: false, message: "토큰 없음" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ result: false, message: "토큰 없음" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY);
+    res.json({ result: true, name: decoded.name });
+  } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ result: false, message: "세션이 만료되었습니다." });
+    }
+    res.status(401).json({ result: false, message: "토큰이 유효하지 않음" });
+  }
+};
+
+module.exports = { moveLogin, moveMain, checkLogin, verify };

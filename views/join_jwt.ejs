@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/join.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JOIN</title>
+  </head>
+  <body>
+    <div class="login-box">
+      <h2>회원가입</h2>
+      <form>
+        아이디
+        <input type="email" name="id" id="id" required />
+        <div class="check-btn" onclick="check()">중복확인</div>
+        <br />
+        이름
+        <input
+          type="text"
+          name="name"
+          placeholder="이름을 입력해 주세요"
+          required
+        />
+        <br />
+
+        비밀번호
+        <input
+          type="password"
+          name="pass"
+          id="pass"
+          placeholder="비밀번호를 입력해 주세요"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$"
+          title="비밀번호는 8자 이상, 대소문자 하나씩 포함, 특수문자 하나 이상 포함해야 합니다."
+        />
+
+        <br />
+
+        비밀번호 재확인
+        <input
+          type="password"
+          name="passCheck"
+          id="passCheck"
+          placeholder="비밀번호를 확인해 주세요"
+          required
+        />
+        <div id="alret"></div>
+        <div onclick="passCheck()" class="check-btn">비밀번호 확인</div>
+
+        <button type="button" onclick="join()">회원가입</button>
+        <a href="/login/">로그인하러 가기</a>
+      </form>
+    </div>
+  </body>
+  <script src="/js/join_jwt.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.all.min.js"></script>
+</html>

@@ -31,6 +31,10 @@ app.get("/join", (req, res) => {
   res.render("join");
 });
 
+app.get("/join_jwt", (req, res) => {
+  res.render("join_jwt");
+});
+
 app.get("/findId", (req, res) => {
   res.render("findId");
 });

@@ -1,3 +1,4 @@
+// 중복 확인
 function check() {
   const id = document.getElementById("id").value;
   const pass = document.getElementById("pass").value;
@@ -5,7 +6,7 @@ function check() {
 
   axios({
     method: "post",
-    url: `/login/check`,
+    url: `/join/check`,
     data: data,
   })
     .then((res) => {
@@ -37,4 +38,23 @@ function check() {
         icon: "error",
       });
     });
+}
+
+function passCheck() {
+  const pass = document.getElementById("pass").value;
+  const passCheck = document.getElementById("passCheck").value;
+  const alret = document.getElementById("alret");
+
+  if (pass === "" || passCheck === "") {
+    Swal.fire({
+      icon: "error",
+      text: "비밀번호가 비어있습니다.",
+    });
+  } else {
+    if (pass === passCheck) {
+      alret.innerText = "동일한 비밀번호입니다.";
+    } else {
+      alret.innerText = "비밀번호가 다릅니다.";
+    }
+  }
 }
